@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+  <head>
+    <title>Responsive image gallery</title>
+    <style>
+        *{/* all elements ki apply*/
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+        }
+        body{
+            height:100vh;
+        }
+        h2{
+            text-align: center;
+            font-size:40px;
+            margin:25 0;
+            color:red;
+        }
+        .container{
+            position:relative;/* unte element ni top bottom and left right ki marcha vachu*/
+            background-color:green;
+        }
+        /*row:-left to right // column:-top to bottom*/
+        .gallery{
+            display:flex;/*grid top to bottom*/
+            flex-wrap: wrap;/* okka varaslo or one linelo sarga unchadam*/
+            justify-content:center;
+            width: 100%;
+        }
+        .gallery img{
+            width: 200px;
+            height: 200px;
+            object-fit:cover;
+            padding:5px;
+            transition: all 4;/*some time lo style change avutundi*/
+        }
+        .gallery img:hover{
+            cursor:pointer;/*pointer isthe hand symbol tho touch avuthundi*/
+            box-shadow: 0px 0px 10px;
+            transform: scale(1.03);/*little bit zoom touch size increase or decrease */
+        }
+        .popup{
+            position: fixed;
+            top:0;
+            left:0;
+            z-index:10;/*full width tisukovali z-index unte positon must abnd should*/
+            width: 100%;
+            height: 100%;
+            display: none;
+            background-color: rgba(0,0,0,0.7);
+            z-index:20;
+        }
+        .popup span{
+            position: absolute;/* vere el`ement nudi vidiga untudi*/
+            top:0;
+            right: 10;/* into mark top nudi 0 and right nudi 10px undali*/
+            color:white;
+            cursor:pointer;/*hand symbol*/
+            font-size:40px;
+            z-index:20;
+        }
+        .popup img{
+            position:absolute;/*center positon*/
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            max-width:750px;
+            object-fit:cover;
+        }
+
+
+    </style>
+  </head>
+      <body>
+         <div class="container">
+            <h2>Image Gallery</h2>
+             <div class="gallery">
+                <img src="images/oil2.jpg" alt="">
+                <img src="images/2.jpg" alt="">
+                <img src="images/3.jpg" alt="">
+                <img src="images/4.jpg" alt="">
+                <img src="images/5.jpg" alt="">
+                <img src="images/6.jpg" alt="">
+                <img src="images/atta.jpg" alt="">
+                <img src="images\butter.jpg" alt="">
+                <img src="images\oil1.jpg" alt="">
+                <img src="images\oil2.jpg" alt="">
+                <img src="images\oil3.jpg" alt="">
+                <img src="images\salt.5jpg.jpg" alt="">
+                <img src="images/oil2.jpg" alt="">
+                <img src="images/2.jpg" alt="">
+                <img src="images/3.jpg" alt="">
+                <img src="images/4.jpg" alt="">
+                <img src="images/5.jpg" alt="">
+                <img src="images/6.jpg" alt="">
+                <img src="images/2.jpg" alt="">
+
+            </div>
+            <div class="popup">
+                <span>&times;</span>//into symbol kosam
+                <img src="images/3.jpg" alt="">
+            </div>
+         </div>
+
+
+        <script>
+            let images=document.querySelectorAll(".gallery img");
+
+            let popup=document.querySelector(".popup");
+            let popupimg=document.querySelector(".popup img");
+            //for of loop
+            //for(arr of variable)
+            for(img of images){ //itaration all
+             img.onclick=function(){
+                popup.style.display="block"/* popup style lo display non pettamu now block so click event lo img vasthundi*/
+                popupimg.src=this.getAttribute("src") //ekada all images lo ekeda click event aeithe a img display avutundi
+            } //this e img event ha img pointout so src lo img
+            
+            }
+            document.querySelector(".popup span").onclick =function(){
+                popup.style.display="none";//ekada ha into mark ki event display none function
+            }
+               
+
+        </script>
+      </body>
+ </html>
